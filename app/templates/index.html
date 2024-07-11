@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!--这个代码片段是一个使用Jinja模板语言编写的HTML文件，通常用于Flask等Python框架。这是一个扩展自 base.html 的模板，并定义了一个内容块。-->
 
-{% block content %}
-    <h1>Hi, {{ user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+{% block content %} <!--这个部分定义了一个名为 content 的块，这个块中的内容会被插入到 base.html 中对应的 content 块位置。-->
+    <h1>Hi, {{ user.username }}!</h1> <!--这里使用了 {{ user.username }}，这是一个Jinja变量，会在渲染时被替换为实际用户的用户名。-->
+    {% for post in posts %} <!--这是一个循环，用于遍历 posts 列表。每个 post 代表一个帖子。-->
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div> <!--对于每个帖子，显示帖子作者的用户名 {{ post.author.username }} 和帖子的内容 -->
     {% endfor %}
 {% endblock %}

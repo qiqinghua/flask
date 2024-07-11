@@ -1,8 +1,8 @@
-<!doctype html>
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - microblog</title>
+<!doctype html> <!-- 声明文档类型为HTML5-->
+<html> <!--<html>标签是HTML文档的根元素-->
+    <head> 
+        {% if title %} <!--是Jinja模板中的条件语句-->
+        <title>{{ title }} - microblog</title> 
         {% else %}
         <title>microblog</title>
         {% endif %}
@@ -10,19 +10,19 @@
     <body>
         <div>
             Microblog:
-            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('index') }}">Home</a> <!--使用Flask的url_for函数生成相应视图函数的URL-->
             <a href="{{ url_for('login') }}">Login</a>
         </div>
-        <hr>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
+        <hr>  <!--水平分割线-->
+        {% with messages = get_flashed_messages() %} <!--是一个上下文管理器，用于获取闪现消息-->
+        {% if messages %} <!--检查是否有消息-->
         <ul>
-            {% for message in messages %}
+            {% for message in messages %} <!--遍历每条消息并显示在列表中-->
             <li>{{ message }}</li>
             {% endfor %}
         </ul>
         {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock %} <!--定义了一个可重写的内容块，用于在继承模板时插入具体内容。-->
     </body>
 </html>

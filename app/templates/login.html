@@ -1,10 +1,11 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!--这行代码表示这个模板将扩展自 base.html，意味着它会继承 base.html 中定义的所有内容和结构。-->>
 
-{% block content %}
+{% block content %} <!--这个部分定义了一个名为 content 的块，这个块中的内容会被插入到 base.html 中对应的 content 块位置。-->
     <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
+    <form action="" method="post" novalidate> <!--一个HTML表单元素。action=""表示表单提交到当前页面，method="post"表示使用POST方法提交表单数据，novalidate禁用HTML5的自动验证。-->
         {{ form.hidden_tag() }}
-        <p>
+        <!--上面这行代码用于生成隐藏的表单字段（如CSRF令牌），这是由Flask-WTF生成的。-->
+        <p> <!--渲染表单字段和错误消息-->
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}<br>
             {% for error in form.username.errors %}
@@ -18,7 +19,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p> <!--渲染“记住我”复选框及其标签。-->>
+        <p>{{ form.submit() }}</p> <!--渲染提交按钮。-->
     </form>
 {% endblock %}
