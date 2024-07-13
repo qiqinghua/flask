@@ -11,7 +11,11 @@
         <div>
             Microblog:
             <a href="{{ url_for('index') }}">Home</a> <!--使用Flask的url_for函数生成相应视图函数的URL-->
+            {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
         </div>
         <hr>  <!--水平分割线-->
         {% with messages = get_flashed_messages() %} <!--是一个上下文管理器，用于获取闪现消息-->
